@@ -1,0 +1,65 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Avenant.master.cs" Inherits="Avenent.Avenant" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">        
+    </asp:ContentPlaceHolder>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" runat="server" />
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery-3.5.1.min.js"></script>
+    <style>
+       body{
+            position:relative;
+        }
+          .MenuLeftdv{
+              position:absolute;
+              top:0;
+              display:flex;
+              padding:0rem;
+              background-color:#80baf2;
+              border-radius:2px 2px 2px 2px;
+              width:100%;
+             
+          }
+          .Hyperlink{
+              padding:0.3rem 1rem;
+              color:black;
+              font-weight:500;
+            margin-right:4%;
+            margin-left:2%;
+             border-radius:4px 4px 4px 4px;
+          }
+          .Hyperlink:hover{
+              color:white;
+              text-decoration:none;
+              background-color:#0026ff;
+          }
+             
+        </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+          
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+            </asp:ContentPlaceHolder>
+          
+            <div class="MenuLeftdv">
+                    <asp:HyperLink ID="HyperLinkRen" CssClass="Hyperlink"  NavigateUrl="~/RenouvMP.aspx" runat="server">Renouvellement</asp:HyperLink>
+                    <asp:HyperLink ID="HyperLinkChangImm" CssClass="Hyperlink"  NavigateUrl="~/ChangImmaMP.aspx" runat="server">Changement Immaticulation</asp:HyperLink>
+                    <asp:HyperLink ID="HyperLinkChangVehi" CssClass="Hyperlink"  NavigateUrl="~/ChangVehiculMP.aspx" runat="server">Changemant Vehicule</asp:HyperLink>
+                    <asp:HyperLink ID="HyperLinkChangGarant" CssClass="Hyperlink"  NavigateUrl="~/ChangGarantie.aspx" runat="server">Changemant Garantie</asp:HyperLink>
+                    <asp:HyperLink ID="HyperLinkAnnulation" CssClass="Hyperlink"  NavigateUrl="~/AnnulationMP.aspx" runat="server">Annulation</asp:HyperLink>
+                    <asp:HyperLink ID="HyperLinkResil" CssClass="Hyperlink"  NavigateUrl="~/ResiliationMP.aspx" runat="server">Résiliation</asp:HyperLink>      
+            </div>
+        <div class="BodyPage">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+           
+    </form>
+</body>
+</html>

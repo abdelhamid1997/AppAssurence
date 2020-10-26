@@ -1,0 +1,164 @@
+﻿body {
+}
+.headpage {
+    height: 20%;
+    background-color: #e6f0f7;
+    width: 100%;
+    padding: 1rem 0 1rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 2fr;
+    column-gap: 2rem;
+}
+
+.todayRefrech {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    margin-top: 0.7rem;
+}
+
+.searchdv {
+    height: 3rem;
+    width: 90%;
+    margin: auto 2rem;
+}
+
+.BranchCompagnie {
+}
+
+.drpcompbranch {
+    margin-top: 0.5rem;
+    height: 2rem;
+}
+
+.allCheck {
+    margin-left: 1rem;
+}
+
+.txtSearch {
+    height: 3rem;
+}
+
+.DropSearch {
+    font-weight: 500;
+    justify-content: center;
+    width: 15%;
+}
+
+.btnSearch {
+    font-weight: 500;
+}
+
+.txtDate {
+    margin-top: 0.5rem;
+    height: 2rem;
+    width: 30%;
+    font-weight: 500;
+}
+
+.GridView {
+    background-color: #b3d7f1;
+    margin: auto;
+    margin-top: 4rem;
+    border: none;
+}
+
+    .GridView td {
+        padding: 1rem 1rem;
+        border: none;
+        border-right: 2px solid #ffff;
+        font-weight: bold;
+    }
+
+    .GridView tr {
+        border-right: 2px solid #207ec3;
+    }
+
+    .GridView th {
+        border: none;
+        border-bottom: 2px solid #ffff;
+        border-right: 2px solid #ffff;
+        text-align: center;
+        padding: 1rem 1.5rem;
+        font-size: 22px;
+        background-color: #4fadf1;
+    }
+
+table.GridView {
+    border-radius: 5px;
+    border-right: 3px solid transparent;
+}
+
+
+
+
+
+.tableEtat {
+    margin: 3rem auto;
+    width: 35%;
+}
+
+    .tableEtat td {
+        padding: 4rem 1rem 1rem 1rem;
+        border: none;
+        width: 5%;
+        font-size: 20px;
+    }
+
+.RefrechImg {
+    width: 35px;
+    height: 35px;
+    margin-top: -0.5rem;
+    overflow-x: hidden;
+}
+   
+
+
+
+
+/**********************CssAvenantGrid************************/
+
+
+.GridViewAv {
+    position:absolute;
+    background-color: #b3d7f1;     
+    border: none;
+}
+
+    .GridViewAv td {
+        padding: 0.5rem 0.5rem;
+        border: none;
+        border-right: 2px solid #ffff;
+        font-weight: bold;
+    }
+
+    .GridViewAv tr {
+        border-right: 2px solid #207ec3;
+    }
+
+    .GridViewAv th {
+        border: none;
+        border-bottom: 2px solid #ffff;
+        border-right: 2px solid #ffff;
+        text-align: center;
+        padding: 0.5rem 0.5rem;
+        font-size: 20px;
+        background-color: #4fadf1;
+    }
+
+table.GridViewAv {
+    border-radius: 5px;
+    border-right: 3px solid transparent;
+}
+.dvGrid{
+    position:relative;
+    width:80%;
+    left:10%;
+}
+/*************RecouvrementRecherch***********/
+.searchdvRec{
+    width:50%;
+}
+.textbx{
+    width:40%;
+}

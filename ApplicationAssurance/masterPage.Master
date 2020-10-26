@@ -1,0 +1,232 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="masterPage.master.cs" Inherits="ApplicationAssurance.masterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" runat="server" />
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery-3.5.1.min.js"></script>
+    <title></title>
+    <style>    
+       .menu{
+            display:grid;
+            position:absolute;
+            background-color:white;
+            box-shadow:2px 2px 10px #808080;
+            z-index:1;
+       }
+        #dvProd{
+           top:2.5rem;
+           left:8rem;
+           width:auto;         
+       }
+       #dvSaisie{          
+           left:100%;
+           width:100%;
+       }
+       #dvAvenant{
+           top:34%;
+           left:100%;
+           width:120%;
+       }
+       /***********Rec***********/
+
+       #dvRec{
+           top:2.5rem;
+           left:37rem;
+       }
+
+       #dvAffectPai{
+           top:0;
+           left:100%;
+           width:100%;
+       }
+
+       #dvAffectRem{
+         top:25%;
+         left:100%;
+         width:100%;
+       }
+       /************REC*******/
+       ul{
+          position:relative;
+          top:0.5rem;
+          width:auto;
+       }
+       ul li{
+           display:inline;
+           margin-left:5rem;
+          
+          
+       }
+       a.HyperLink{
+           color:white;
+           font-weight:bold;
+           cursor:pointer;
+           padding:1.1rem 2.5rem;
+       }
+        a.HyperLink:hover{
+            text-decoration:none;
+            background-color:white;
+            color:#007bff;
+        }
+       a.HyperLinkunder , a.HyperLinkunder1{
+            color:#007bff;
+            font-weight:bold;
+            padding:1rem;
+            cursor:pointer;
+       }
+        a.HyperLinkunder:hover ,a.HyperLinkunder1:hover{
+            background-color:#808080;
+            color:white;
+            text-decoration:none;
+        }
+        .HyperLink:active + .menu{
+            display:grid;
+            z-index:1;
+        }
+       .logo{
+           margin:0;
+           position:absolute;
+           top:-0.5rem;
+           cursor:pointer;
+           z-index:1;
+       }
+       
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body runat="server">
+    <form id="form1" runat="server">
+         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+          <asp:UpdatePanel ID="UpdatePanel1" runat="server"><ContentTemplate>
+        <div id="NavAct">
+             <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+                 <div>
+             <asp:HyperLink ID="Nav_logo" CssClass="logo font-weight-bold text-white text-decoration-none" runat="server"><img src="/img/logoSite.png" class="logo" height="90px" width="90px" /></asp:HyperLink>
+                 </div>
+                <ul>
+                    <li class="first">
+                    <asp:HyperLink ID="HyperLinkProd" CssClass="HyperLink " role="Button" runat="server"><i></i>Production</asp:HyperLink>
+                        <div class="menu"  id="dvProd" runat="server">
+                            <asp:HyperLink ID="HyperLinkSaisieAff" CssClass="HyperLinkunder " runat="server">Affaire Nouvelle</asp:HyperLink>
+                            <asp:HyperLink ID="HyperLinkAvenant" CssClass="HyperLinkunder" runat="server">Avenant</asp:HyperLink>
+                            <div class="menu" id="dvAvenant" runat="server">
+                                <asp:HyperLink ID="HyperLinkRenouv" CssClass="HyperLinkunder1" runat="server">Renouvelle</asp:HyperLink>
+                            <asp:HyperLink ID="HyperLinkRes" CssClass="HyperLinkunder1" runat="server">Resiliation</asp:HyperLink>
+                            <asp:HyperLink ID="HyperLinkAnnu" CssClass="HyperLinkunder1" runat="server">Annulation</asp:HyperLink>
+                            <asp:HyperLink ID="HyperLinkChangV" CssClass="HyperLinkunder1" runat="server">Changement Vehicule</asp:HyperLink>
+                            <asp:HyperLink ID="HyperLinkChangement" CssClass="HyperLinkunder" runat="server">Changement Immatriculation</asp:HyperLink>
+                            </div>
+                            <asp:HyperLink ID="HyperLinkEtatP" CssClass="HyperLinkunder" runat="server">Etat Production</asp:HyperLink>
+                        </div>
+                    </li>
+                    <li>
+                         <asp:HyperLink ID="HyperLinkClient" CssClass="HyperLink" runat="server">Client</asp:HyperLink>
+                    </li>
+                    <li>
+                         <asp:HyperLink ID="HyperLinkRec" CssClass="HyperLink" runat="server">Recouvrement</asp:HyperLink>
+                        <div class="menu" id="dvRec" runat="server">
+                            <asp:HyperLink ID="HyperLinkAffectP" CssClass="HyperLinkunder" runat="server">Affecter Paiement</asp:HyperLink>
+                             <asp:HyperLink ID="HyperLinkAffectRem" CssClass="HyperLinkunder" runat="server">Affecter Remise</asp:HyperLink>
+
+                            <div class="menu" id="dvAffectRem" runat="server">
+                            <asp:HyperLink ID="HyperLinkRemCheque" CssClass="HyperLinkunder" runat="server">Remise Chèque</asp:HyperLink>
+                            <asp:HyperLink ID="HyperLinkRemCredit" CssClass="HyperLinkunder" runat="server">Remise Crédit</asp:HyperLink>
+                            </div>
+                             <asp:HyperLink ID="HyperLinkEtatcheque" CssClass="HyperLinkunder" runat="server">Etat des chèques</asp:HyperLink>
+                             <asp:HyperLink ID="HyperLinkEtat_Paiement" CssClass="HyperLinkunder" runat="server">Etat de paiement</asp:HyperLink>
+                        </div>
+                    </li>
+
+
+                     <li>
+                         <asp:HyperLink ID="HyperLinkPerfor" CssClass="HyperLink" runat="server">Performance</asp:HyperLink>
+                    </li>
+
+                    <li>
+                         <asp:HyperLink ID="HyperLinkSynth" CssClass="HyperLink" runat="server">Synthèse</asp:HyperLink>
+                    </li>
+                     <li>
+                         <asp:HyperLink ID="HyperLinkSinistre" CssClass="HyperLink" runat="server">Sinistre</asp:HyperLink>
+                    </li>
+
+                </ul>
+             </nav>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        </ContentTemplate></asp:UpdatePanel>
+    </form>
+    <script>
+        
+        $(document).ready(function () {
+            $("#dvRec").hide();
+            $("#dvProd").hide();
+            $("#dvAvenant").hide();                    
+            $("#dvAffectRem").hide();
+            
+            $("Button").click(function () {
+                $("#dvRec").hide();
+                $("#dvProd").hide();
+                $("#dvAvenant").hide();
+               
+             
+                $("#dvAffectRem").hide();
+
+            });
+
+            $("#HyperLinkProd").click(function () {
+                $("#dvProd").slideToggle();
+                $("#dvRec").hide();
+            });
+
+            $("#HyperLinkSaisieAff").click(function () {
+
+              
+                $("#dvAvenant").hide();
+            });
+
+            $("#HyperLinkAvenant").click(function () {
+                $("#dvAvenant").slideToggle();
+              
+            });
+
+            $("#HyperLinkRec").click(function () {
+                $("#dvProd").hide();
+                $("#dvRec").slideToggle();
+            });
+
+            $("#HyperLinkAffectP").click(function () {
+              
+                $("#dvAffectRem").hide();
+            });
+
+            $("#HyperLinkAffectRem").click(function () {
+                $("#dvAffectRem").slideToggle();
+               
+            });
+
+            //$(".HyperLinkunder").click(function () {
+
+            //    $(".HyperLinkunder").removeClass("active");
+            //    $(this).addClass("active");
+
+            //});
+            //$(".HyperLinkunder1").click(function () {
+
+            //    $(".HyperLinkunder1").removeClass("active");
+            //    $(this).addClass("active");
+
+            //});
+
+
+         
+        });
+    </script>
+</body>
+     <script src="Scripts/jquery-3.5.1.min.js"></script>
+</html>
