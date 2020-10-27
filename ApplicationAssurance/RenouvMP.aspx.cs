@@ -6,16 +6,18 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using ApplicationAssurance;
+
 namespace Avenent
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        SqlConnection cnx = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=Assurancedb;Integrated Security=True");
+        ADO d = new ADO();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["SelecteValue"] = DropDownList1.SelectedValue;
-            cnx.Open();
+            d.CONNECTER();
             SqlDataSource SqlDataSource4 = new SqlDataSource();
             SqlDataSource4.ID = "SqlDataSource4";
             this.Page.Controls.Add(SqlDataSource4);
@@ -23,7 +25,7 @@ namespace Avenent
             SqlDataSource4.SelectCommand = "select id_affaire , id_client ,( nom_RS +' '+ prenom_FJ) as NomComplet , numPolice, numAttestation,convert(varchar, dateOperation) as DateOperation ,convert(varchar, dateFin) as Date_Fin,Compagnie,Affectation from vwAuto  ";
             GridView1.DataSource = SqlDataSource4;
             GridView1.DataBind();
-            cnx.Close();
+            d.con.Close();
 
         }
 
@@ -36,7 +38,7 @@ namespace Avenent
         {
             if (DropDownList1.SelectedValue == "Auto")
             {
-                cnx.Open();
+                d.CONNECTER();
                 SqlDataSource SqlDataSource5 = new SqlDataSource();
                 SqlDataSource5.ID = "SqlDataSource5";
                 this.Page.Controls.Add(SqlDataSource5);
@@ -44,11 +46,11 @@ namespace Avenent
                 SqlDataSource5.SelectCommand = "select id_affaire , id_client ,( nom_RS +' '+ prenom_FJ) as NomComplet , numPolice, numAttestation,convert(varchar, dateOperation) as DateOperation ,convert(varchar, dateFin) as Date_Fin,Compagnie,Affectation from vwAuto where numPolice = '" + TextBox1.Text + "' or numAttestation='"+TextBox1.Text+ "' or cin_rc='"+TextBox1.Text+ "' or id_client='" +TextBox1.Text+ "'";
                 GridView1.DataSource = SqlDataSource5;
                 GridView1.DataBind();
-                cnx.Close();
+                d.con.Close();
             }
             else if (DropDownList1.SelectedValue == "HorsAuto")
             {
-                cnx.Open();
+                d.CONNECTER();
                 SqlDataSource SqlDataSource2 = new SqlDataSource();
                 SqlDataSource2.ID = "SqlDataSource2";
                 this.Page.Controls.Add(SqlDataSource2);
@@ -56,11 +58,11 @@ namespace Avenent
                 SqlDataSource2.SelectCommand = "select id_affaire , id_client ,( nom_RS +' '+ prenom_FJ) as NomComplet , numPolice, brancheRD,convert(varchar, dateOperation) as DateOperation ,convert(varchar, dateFin) as Date_Fin,Compagnie,Affectation from vwHorsAuto where numPolice = '" + TextBox1.Text + "' or id_client='" + TextBox1.Text + "' or cin_rc='" + TextBox1.Text + "' ";
                 GridView1.DataSource = SqlDataSource2;
                 GridView1.DataBind();
-                cnx.Close();
+                d.con.Close();
             }
             else if (DropDownList1.SelectedValue == "Assistance")
             {
-                cnx.Open();
+                d.CONNECTER();
                 SqlDataSource SqlDataSource3 = new SqlDataSource();
                 SqlDataSource3.ID = "SqlDataSource3";
                 this.Page.Controls.Add(SqlDataSource3);
@@ -68,7 +70,7 @@ namespace Avenent
                 SqlDataSource3.SelectCommand = "select id_affaire , id_client ,( nom_RS +' '+ prenom_FJ) as NomComplet , numPolice, typeAssistance,convert(varchar, dateOperation) as DateOperation ,convert(varchar, dateFin) as Date_Fin,Compagnie,Affectation from vwAssistance where numPolice = '" + TextBox1.Text + "' or id_client='" + TextBox1.Text + "' or cin_rc='" + TextBox1.Text + "' ";
                 GridView1.DataSource = SqlDataSource3;
                 GridView1.DataBind();
-                cnx.Close();
+                d.con.Close();
             }
         }
 
@@ -78,7 +80,7 @@ namespace Avenent
 
             if (DropDownList1.SelectedValue == "Auto")
             {
-                cnx.Open();
+                d.CONNECTER();
                 SqlDataSource SqlDataSource1 = new SqlDataSource();
                 SqlDataSource1.ID = "SqlDataSource1";
                 this.Page.Controls.Add(SqlDataSource1);
@@ -86,11 +88,11 @@ namespace Avenent
                 SqlDataSource1.SelectCommand = "select id_affaire , id_client ,( nom_RS +' '+ prenom_FJ) as NomComplet , numPolice, numAttestation,convert(varchar, dateOperation) as DateOperation ,convert(varchar, dateFin) as Date_Fin,Compagnie,Affectation from vwAuto   ";
                 GridView1.DataSource = SqlDataSource1;
                 GridView1.DataBind();
-                cnx.Close();
+                d.con.Close();
             }
             else if(DropDownList1.SelectedValue =="HorsAuto")
             {
-                cnx.Open();
+                d.CONNECTER();
                 SqlDataSource SqlDataSource2 = new SqlDataSource();
                 SqlDataSource2.ID = "SqlDataSource2";
                 this.Page.Controls.Add(SqlDataSource2);
@@ -98,11 +100,11 @@ namespace Avenent
                 SqlDataSource2.SelectCommand = "select id_affaire , id_client ,( nom_RS +' '+ prenom_FJ) as NomComplet , numPolice, brancheRD,convert(varchar, dateOperation) as DateOperation ,convert(varchar, dateFin) as Date_Fin,Compagnie,Affectation from vwHorsAuto  ";
                 GridView1.DataSource = SqlDataSource2;
                 GridView1.DataBind();
-                cnx.Close();
+                d.con.Close();
             }
             else if(DropDownList1.SelectedValue == "Assistance")
             {
-                cnx.Open();
+                d.CONNECTER();
                 SqlDataSource SqlDataSource3 = new SqlDataSource();
                 SqlDataSource3.ID = "SqlDataSource3";
                 this.Page.Controls.Add(SqlDataSource3);
@@ -110,7 +112,7 @@ namespace Avenent
                 SqlDataSource3.SelectCommand = "select id_affaire , id_client ,( nom_RS +' '+ prenom_FJ) as NomComplet , numPolice, typeAssistance,convert(varchar, dateOperation) as DateOperation ,convert(varchar, dateFin) as Date_Fin,Compagnie,Affectation from vwAssistance  ";
                 GridView1.DataSource = SqlDataSource3;
                 GridView1.DataBind();
-                cnx.Close();
+                d.con.Close();
             }
         }
 

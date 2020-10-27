@@ -16,12 +16,11 @@ namespace ApplicationAssurance
     {
         ADO d = new ADO();
 
-        SqlConnection cnx = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=Assurancedb;Integrated Security=True");
 
         public void Auto()
         {
-            cnx.Open();
-            SqlCommand cmd = new SqlCommand("select * from vwAuto where id_affaire ='" + Request.QueryString["id_affaire"].ToString() + "'", cnx);
+            d.CONNECTER();
+            SqlCommand cmd = new SqlCommand("select * from vwAuto where id_affaire ='" + Request.QueryString["id_affaire"].ToString() + "'", d.con);
             SqlDataReader dr = cmd.ExecuteReader();
 
             dr.Read();
@@ -58,8 +57,8 @@ namespace ApplicationAssurance
 
         public void HorsAuto()
         {
-            cnx.Open();
-            SqlCommand cmd = new SqlCommand("select * from vwHorsAuto where id_affaire ='" + Request.QueryString["id_affaire"].ToString() + "'", cnx);
+            d.CONNECTER();
+            SqlCommand cmd = new SqlCommand("select * from vwHorsAuto where id_affaire ='" + Request.QueryString["id_affaire"].ToString() + "'", d.con);
             SqlDataReader dr = cmd.ExecuteReader();
 
             dr.Read();
@@ -100,8 +99,8 @@ namespace ApplicationAssurance
 
         public void Assistance()
         {
-            cnx.Open();
-            SqlCommand cmd = new SqlCommand("select * from vwAssistance where id_affaire ='" + Request.QueryString["id_affaire"].ToString() + "'", cnx);
+            d.CONNECTER();
+            SqlCommand cmd = new SqlCommand("select * from vwAssistance where id_affaire ='" + Request.QueryString["id_affaire"].ToString() + "'", d.con);
             SqlDataReader dr = cmd.ExecuteReader();
 
             dr.Read();
@@ -213,21 +212,21 @@ namespace ApplicationAssurance
           
             if (Session["SelecteValue"].ToString() == "Auto" && NumAtt() == 0)
             {
-                cnx.Open();
-                SqlCommand cmd = new SqlCommand("insert into affaire (id_client,souscripteur,dateOperation,datedebut,datefin,numPolice,natureOperation,branche,Compagnie,TypeAff,Affectation) values('" + idclienttxt.Text + "','" + soustxt.Text + "','" + DateTime.Parse(dateopetxt.Text) + "','" + DateTime.Parse(datedebuttxt.Text) + "','" + DateTime.Parse(datefintxt.Text) + "','" + numpolicetxt.Text + "','" + naturetxt.Text + "','Auto','" + compagnietxt.Text + "','" +droptypeAff.SelectedValue + "','" + Affectxt.Text + "') ", cnx);
+                d.CONNECTER();
+                SqlCommand cmd = new SqlCommand("insert into affaire (id_client,souscripteur,dateOperation,datedebut,datefin,numPolice,natureOperation,branche,Compagnie,TypeAff,Affectation) values('" + idclienttxt.Text + "','" + soustxt.Text + "','" + DateTime.Parse(dateopetxt.Text) + "','" + DateTime.Parse(datedebuttxt.Text) + "','" + DateTime.Parse(datefintxt.Text) + "','" + numpolicetxt.Text + "','" + naturetxt.Text + "','Auto','" + compagnietxt.Text + "','" +droptypeAff.SelectedValue + "','" + Affectxt.Text + "') ", d.con);
                 cmd.ExecuteNonQuery();
-                cmd = new SqlCommand("select TOP 1 * from affaire order by id_affaire desc", cnx);
+                cmd = new SqlCommand("select TOP 1 * from affaire order by id_affaire desc", d.con);
                 SqlDataReader dr;
                 dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
                     int ida;
                     ida = Convert.ToInt32(dr[0].ToString());
-                    cmd = new SqlCommand("insert into affaireAuto values('" + numattestxt.Text + "','0','" + ida + "')", cnx);
+                    cmd = new SqlCommand("insert into affaireAuto values('" + numattestxt.Text + "','0','" + ida + "')", d.con);
                     dr.Close();
                     cmd.ExecuteNonQuery();
                     //decimal var = 50;
-                    //SqlCommand cmd1 = new SqlCommand("insert into montant values('" + ida + "','" + montanttxt.Text + "','" + primenettxt.Text + "','" + tvatxt.Text + "','" + taxeevrctxt.Text + "','" + taxeevga.Text + "','" + accessoiretxt.Text + "','" + taxe1txt.Text + "','"+var+"','" + netapayertxt.Text + "')", cnx);
+                    //SqlCommand cmd1 = new SqlCommand("insert into montant values('" + ida + "','" + montanttxt.Text + "','" + primenettxt.Text + "','" + tvatxt.Text + "','" + taxeevrctxt.Text + "','" + taxeevga.Text + "','" + accessoiretxt.Text + "','" + taxe1txt.Text + "','"+var+"','" + netapayertxt.Text + "')", d.con);
                     //cmd1.ExecuteNonQuery();
                     AddMoney();
                     Response.Write("<script>alert('Les information sont bien enregistrer')</script>");
@@ -247,21 +246,21 @@ namespace ApplicationAssurance
             }
             else if (Session["SelecteValue"].ToString() == "HorsAuto")
             {
-                cnx.Open();
-                SqlCommand cmd = new SqlCommand("insert into affaire (id_client,souscripteur,dateOperation,datedebut,datefin,numPolice,natureOperation,branche,Compagnie,TypeAff,Affectation) values('" + idclienttxt.Text + "','" + soustxt.Text + "','" + DateTime.Parse(dateopetxt.Text) + "','" + DateTime.Parse(datedebuttxt.Text) + "','" + DateTime.Parse(datefintxt.Text) + "','" + numpolicetxt.Text + "','" + naturetxt.Text + "','Auto','" + compagnietxt.Text + "','" + droptypeAff.SelectedValue + "','" + Affectxt.Text + "') ", cnx);
+                d.CONNECTER();
+                SqlCommand cmd = new SqlCommand("insert into affaire (id_client,souscripteur,dateOperation,datedebut,datefin,numPolice,natureOperation,branche,Compagnie,TypeAff,Affectation) values('" + idclienttxt.Text + "','" + soustxt.Text + "','" + DateTime.Parse(dateopetxt.Text) + "','" + DateTime.Parse(datedebuttxt.Text) + "','" + DateTime.Parse(datefintxt.Text) + "','" + numpolicetxt.Text + "','" + naturetxt.Text + "','Auto','" + compagnietxt.Text + "','" + droptypeAff.SelectedValue + "','" + Affectxt.Text + "') ", d.con);
                 cmd.ExecuteNonQuery();
-                cmd = new SqlCommand("select TOP 1 * from affaire order by id_affaire desc", cnx);
+                cmd = new SqlCommand("select TOP 1 * from affaire order by id_affaire desc", d.con);
                 SqlDataReader dr;
                 dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
                     int ida;
                     ida = Convert.ToInt32(dr[0].ToString());
-                    cmd = new SqlCommand("insert into affaireHorsAuto values('" + dropbrancherd.SelectedValue + "','" + ida + "')", cnx);
+                    cmd = new SqlCommand("insert into affaireHorsAuto values('" + dropbrancherd.SelectedValue + "','" + ida + "')", d.con);
                     dr.Close();
                     //decimal var = 50;
                     cmd.ExecuteNonQuery();
-                    //SqlCommand cmd1 = new SqlCommand("insert into montant values('" + ida + "','" + montanttxt.Text + "','" + primenettxt.Text + "','" + tvatxt.Text + "','" + taxeevrctxt.Text + "','" + taxeevga.Text + "','" + accessoiretxt.Text + "','" + taxe1txt.Text + "','" + var +"','" + netapayertxt.Text + "')", cnx);
+                    //SqlCommand cmd1 = new SqlCommand("insert into montant values('" + ida + "','" + montanttxt.Text + "','" + primenettxt.Text + "','" + tvatxt.Text + "','" + taxeevrctxt.Text + "','" + taxeevga.Text + "','" + accessoiretxt.Text + "','" + taxe1txt.Text + "','" + var +"','" + netapayertxt.Text + "')", d.con);
                     //cmd1.ExecuteNonQuery();
                     AddMoney();
                     Response.Write("<script>alert('Les information sont bien enregistrer')</script>");
@@ -282,19 +281,19 @@ namespace ApplicationAssurance
             else if (Session["SelecteValue"].ToString() == "Assistance")
             {
 
-                SqlCommand cmd = new SqlCommand("insert into affaire (id_client,souscripteur,dateOperation,datedebut,datefin,numPolice,natureOperation,branche,Compagnie,TypeAff,Affectation) values('" + idclienttxt.Text + "','" + soustxt.Text + "','" + DateTime.Parse(dateopetxt.Text) + "','" + DateTime.Parse(datedebuttxt.Text) + "','" + DateTime.Parse(datefintxt.Text) + "','" + numpolicetxt.Text + "','" + naturetxt.Text + "','Auto','" + compagnietxt.Text + "','" + droptypeAff.SelectedValue+ "','" + Affectxt.Text + "') ", cnx);
+                SqlCommand cmd = new SqlCommand("insert into affaire (id_client,souscripteur,dateOperation,datedebut,datefin,numPolice,natureOperation,branche,Compagnie,TypeAff,Affectation) values('" + idclienttxt.Text + "','" + soustxt.Text + "','" + DateTime.Parse(dateopetxt.Text) + "','" + DateTime.Parse(datedebuttxt.Text) + "','" + DateTime.Parse(datefintxt.Text) + "','" + numpolicetxt.Text + "','" + naturetxt.Text + "','Auto','" + compagnietxt.Text + "','" + droptypeAff.SelectedValue+ "','" + Affectxt.Text + "') ", d.con);
                 cmd.ExecuteNonQuery();
-                cmd = new SqlCommand("select TOP 1 * from affaire order by id_affaire desc", cnx);
+                cmd = new SqlCommand("select TOP 1 * from affaire order by id_affaire desc", d.con);
                 SqlDataReader dr;
                 dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
                     int ida;
                     ida = Convert.ToInt32(dr[0].ToString());
-                    cmd = new SqlCommand("insert into AffAssistance values('" + droptypeAssistace.SelectedValue+ "','" + ida + "')", cnx);
+                    cmd = new SqlCommand("insert into AffAssistance values('" + droptypeAssistace.SelectedValue+ "','" + ida + "')", d.con);
                     dr.Close();
                     cmd.ExecuteNonQuery();
-                    //SqlCommand cmd1 = new SqlCommand("insert into montant values('" + ida + "','" + montanttxt.Text + "','" + primenettxt.Text + "','" + tvatxt.Text + "','" + taxeevrctxt.Text + "','" + taxeevga.Text + "','" + accessoiretxt.Text + "','" + taxe1txt.Text + "',' ','" + netapayertxt.Text + "')", cnx);
+                    //SqlCommand cmd1 = new SqlCommand("insert into montant values('" + ida + "','" + montanttxt.Text + "','" + primenettxt.Text + "','" + tvatxt.Text + "','" + taxeevrctxt.Text + "','" + taxeevga.Text + "','" + accessoiretxt.Text + "','" + taxe1txt.Text + "',' ','" + netapayertxt.Text + "')", d.con);
                     //cmd1.ExecuteNonQuery();
                     AddMoney();
                     Response.Write("<script>alert('Les information sont bien enregistrer')</script>");
@@ -312,7 +311,7 @@ namespace ApplicationAssurance
 
 
             }
-            cnx.Close();
+            d.con.Close();
         }
     }
 }

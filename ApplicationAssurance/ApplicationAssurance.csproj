@@ -67,17 +67,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AffectationAnnulation.aspx" />
-    <Content Include="oldpages\AffectationAnnuMP.aspx" />
-    <Content Include="oldpages\AffectationGarantie.aspx" />
+    <Content Include="img\RightIcon.png" />
+    <Content Include="img\WrongIcon.png" />
     <Content Include="Affectationgarantie1.aspx" />
-    <Content Include="oldpages\AffectationImmaMP.aspx" />
     <Content Include="AffectationMatricule.aspx" />
     <Content Include="AffectationRenouvellement.aspx" />
-    <Content Include="oldpages\AffectationRenPM.aspx" />
-    <Content Include="oldpages\AffectationResiliation.aspx" />
     <Content Include="AffectationResiliation1.aspx" />
     <Content Include="AffectationVehicule.aspx" />
-    <Content Include="oldpages\AffectationVehiculeMP.aspx" />
     <Content Include="AnnulationMP.aspx" />
     <Content Include="ChangGarantie.aspx" />
     <Content Include="ChangImmaMP.aspx" />
@@ -218,33 +214,12 @@
     <Compile Include="AffectationAnnulation.aspx.designer.cs">
       <DependentUpon>AffectationAnnulation.aspx</DependentUpon>
     </Compile>
-    <Compile Include="oldpages\AffectationAnnuMP.aspx.cs">
-      <DependentUpon>AffectationAnnuMP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="oldpages\AffectationAnnuMP.aspx.designer.cs">
-      <DependentUpon>AffectationAnnuMP.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="oldpages\AffectationGarantie.aspx.cs">
-      <DependentUpon>AffectationGarantie.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="oldpages\AffectationGarantie.aspx.designer.cs">
-      <DependentUpon>AffectationGarantie.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Affectationgarantie1.aspx.cs">
       <DependentUpon>Affectationgarantie1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Affectationgarantie1.aspx.designer.cs">
       <DependentUpon>Affectationgarantie1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="oldpages\AffectationImmaMP.aspx.cs">
-      <DependentUpon>AffectationImmaMP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="oldpages\AffectationImmaMP.aspx.designer.cs">
-      <DependentUpon>AffectationImmaMP.aspx</DependentUpon>
     </Compile>
     <Compile Include="AffectationMatricule.aspx.cs">
       <DependentUpon>AffectationMatricule.aspx</DependentUpon>
@@ -260,20 +235,6 @@
     <Compile Include="AffectationRenouvellement.aspx.designer.cs">
       <DependentUpon>AffectationRenouvellement.aspx</DependentUpon>
     </Compile>
-    <Compile Include="oldpages\AffectationRenPM.aspx.cs">
-      <DependentUpon>AffectationRenPM.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="oldpages\AffectationRenPM.aspx.designer.cs">
-      <DependentUpon>AffectationRenPM.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="oldpages\AffectationResiliation.aspx.cs">
-      <DependentUpon>AffectationResiliation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="oldpages\AffectationResiliation.aspx.designer.cs">
-      <DependentUpon>AffectationResiliation.aspx</DependentUpon>
-    </Compile>
     <Compile Include="AffectationResiliation1.aspx.cs">
       <DependentUpon>AffectationResiliation1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -287,13 +248,6 @@
     </Compile>
     <Compile Include="AffectationVehicule.aspx.designer.cs">
       <DependentUpon>AffectationVehicule.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="oldpages\AffectationVehiculeMP.aspx.cs">
-      <DependentUpon>AffectationVehiculeMP.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="oldpages\AffectationVehiculeMP.aspx.designer.cs">
-      <DependentUpon>AffectationVehiculeMP.aspx</DependentUpon>
     </Compile>
     <Compile Include="AnnulationMP.aspx.cs">
       <DependentUpon>AnnulationMP.aspx</DependentUpon>

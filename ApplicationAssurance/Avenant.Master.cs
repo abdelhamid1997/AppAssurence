@@ -11,7 +11,6 @@ namespace Avenent
 {
     public partial class Avenant : System.Web.UI.MasterPage
     {
-        SqlConnection cnx = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=Assurancedb;Integrated Security=True");
 
         protected void Page_Load(object sender, EventArgs e)
         {

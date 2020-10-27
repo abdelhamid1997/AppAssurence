@@ -9,7 +9,7 @@
            padding:2rem;
        }
        
-       body{
+       body{                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
            background-color:#cbdef8;
            align-content:center;
        }
@@ -20,6 +20,7 @@
             font-size:100px;
             opacity:0.5;
        }
+       
        .form-control{
            background-color:white;
            width:70%;
@@ -188,6 +189,23 @@
         .AlertdvSucces{
             display:none;
         }
+        .none{            
+            display:none;
+        }
+        
+        .rightShow{
+            margin-left:0.2rem;
+            width:30px;
+            height:30px;
+            display:inline;
+        }
+        .wrongShow{
+            margin-left:0.2rem;
+            width:25px;
+            height:25px;
+            display:inline;
+        }
+
        
    </style>
 </asp:Content>
@@ -252,7 +270,7 @@
                         </div>
                          <div class="form-group">
                               <label>GSM :</label>
-                             <asp:TextBox ID="TextBoxGSM" runat="server" placeholder="+212/ 06 00 00 00 00 "></asp:TextBox>
+                             <asp:TextBox ID="TextBoxGSM" runat="server" placeholder="+212/ 06 00 00 00 00 " AutoPostBack="true" OnTextChanged="TextBoxGSM_TextChanged"></asp:TextBox><img runat="server" id="GsmRight" class="none" src="img/RightIcon.png" /><img runat="server" id="GsmWrong" class="none" src="img/WrongIcon.png" />
                         </div>
                          <div class="form-group">
                              <label>Date Naissance:</label>
@@ -260,7 +278,7 @@
                         </div>
                          <div class="form-group">
                              <label>Email :</label>
-                             <asp:TextBox ID="TextBoxEmail" runat="server"></asp:TextBox>
+                             <asp:TextBox ID="TextBoxEmail" runat="server" AutoPostBack="true" OnTextChanged="TextBoxEmail_TextChanged"></asp:TextBox><img runat="server" id="EmailRight" class="none" src="img/RightIcon.png" /><img runat="server" id="EmailWrong" class="none" src="img/WrongIcon.png" />
                         </div>
                          <div class="form-group">
                              <label>Ville:</label>
@@ -270,12 +288,13 @@
                              <label>Adress :</label>
                              <asp:TextBox ID="TextBoxAdress" runat="server"></asp:TextBox>
                         </div>
-                     
+                         
                         <div class="form-group">
                              <label>Activiter :</label>
                             <asp:DropDownList ID="DropDownListActivite" CssClass="drop" runat="server">
                                 <asp:ListItem>Professeur</asp:ListItem>
-                                <asp:ListItem>Parrain</asp:ListItem>
+                                <asp:ListItem>Docteur</asp:ListItem>
+                                <asp:ListItem>Formateur</asp:ListItem>
                              </asp:DropDownList>
                         </div>
                         <div class="form-group">
@@ -325,20 +344,21 @@
 
                     <div class="modal-body">
                          <div id="AutoArea" runat="server">
+
                         <div class="form-group">
                             <label>Numero Attestation :</label>
                             <asp:TextBox ID="TextBoxNumAtt" runat="server"></asp:TextBox>
-                        </div>                       
+                        </div>         
+                             <div class="form-group">
+                              <label>Num Permis :</label>
+                             <asp:TextBox ID="TextBoxNumP" placeholder="Du Conducteur" runat="server" AutoPostBack="true" OnTextChanged="TextBoxNumP_TextChanged"></asp:TextBox><img runat="server" id="PermisRight" class="none" src="img/RightIcon.png" /><img runat="server" id="PermisWrong" class="none" src="img/WrongIcon.png" />
+                        </div>
                         <div class="form-group">
                              <label>Flotte:</label>
                              <asp:DropDownList ID="DropDownListFlotte" CssClass="drop" runat="server">
                                  <asp:ListItem>NON</asp:ListItem>
                                  <asp:ListItem>OUI</asp:ListItem>            
                              </asp:DropDownList>
-                        </div>
-                                 <div class="form-group">
-                              <label>Num Permis :</label>
-                             <asp:TextBox ID="TextBoxNumP" runat="server"></asp:TextBox>
                         </div>
                          </div>
                         <div id="HorsAutoArea" runat="server">
@@ -378,19 +398,7 @@
                                  <asp:ListItem>R</asp:ListItem>
                                  <asp:ListItem>NR</asp:ListItem>
                              </asp:DropDownList>
-                        </div>
-
-                         <div class="form-group">
-                              <label>Usage:</label>
-                             <asp:DropDownList ID="DropDownListUsage" CssClass="drop" runat="server">
-                                 <asp:ListItem>AUTO</asp:ListItem>
-                                 <asp:ListItem>CYCLO</asp:ListItem>
-                                 <asp:ListItem>COMMERCE</asp:ListItem>
-                                 <asp:ListItem>DIVERS</asp:ListItem>
-                                 <asp:ListItem>PROVISOIRE</asp:ListItem>
-                                 <asp:ListItem>CARTE VERTE</asp:ListItem>
-                              </asp:DropDownList>
-                        </div>
+                        </div>                        
                          <div class="form-group">
                               <label>Numero de Police :</label>
                              <asp:TextBox ID="TextBoxNumPolice" runat="server"></asp:TextBox>
@@ -423,7 +431,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Immatriculation :</label>
-                            <asp:TextBox ID="TextBoxImmatriculation" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="TextBoxImmatriculation" runat="server" AutoPostBack="true" OnTextChanged="TextBoxImmatriculation_TextChanged"></asp:TextBox><img runat="server" id="ImmaRight" class="none" src="img/RightIcon.png" /><img runat="server" id="ImmaWrong" class="none" src="img/WrongIcon.png" />
                         </div>
 
                          <div class="form-group">
@@ -431,10 +439,21 @@
                             <asp:TextBox ID="TextBoxMarque" runat="server"></asp:TextBox>
                         </div>
 
-                    
+                         <div class="form-group">
+                              <label>Usage:</label>
+                             <asp:DropDownList ID="DropDownListUsage" CssClass="drop" runat="server">
+                                 <asp:ListItem>AUTO</asp:ListItem>
+                                 <asp:ListItem>CYCLO</asp:ListItem>
+                                 <asp:ListItem>COMMERCE</asp:ListItem>
+                                 <asp:ListItem>DIVERS</asp:ListItem>
+                                 <asp:ListItem>PROVISOIRE</asp:ListItem>
+                                 <asp:ListItem>CARTE VERTE</asp:ListItem>
+                              </asp:DropDownList>
+                        </div>
+
                          <div class="form-group">
                             <label>Date MEC :</label>
-                            <asp:TextBox ID="TextBoxDateMec" runat="server" placeHolder="jj/mm/yyyy"></asp:TextBox>
+                            <asp:TextBox ID="TextBoxDateMec" placeholder="jj/mm/yyyy" runat="server"></asp:TextBox>
                         </div>
                    
                     </div>
@@ -485,7 +504,7 @@
                 <asp:TableCell><asp:TextBox ID="TextBoxMontant" Enabled="false" runat="server"></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableFooterRow>
-                <asp:TableCell ColumnSpan="2"></asp:TableCell>
+                <asp:TableCell ColumnSpan="2">TEXT</asp:TableCell>
             </asp:TableFooterRow>
         </asp:Table>
         </div>

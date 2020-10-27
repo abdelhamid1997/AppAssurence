@@ -114,6 +114,24 @@ namespace ApplicationAssurance
         protected global::System.Web.UI.WebControls.TextBox TextBoxGSM;
 
         /// <summary>
+        /// Contrôle GsmRight.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage GsmRight;
+
+        /// <summary>
+        /// Contrôle GsmWrong.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage GsmWrong;
+
+        /// <summary>
         /// Contrôle TextBoxDateN.
         /// </summary>
         /// <remarks>
@@ -130,6 +148,24 @@ namespace ApplicationAssurance
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxEmail;
+
+        /// <summary>
+        /// Contrôle EmailRight.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage EmailRight;
+
+        /// <summary>
+        /// Contrôle EmailWrong.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage EmailWrong;
 
         /// <summary>
         /// Contrôle TextBoxVille.
@@ -240,15 +276,6 @@ namespace ApplicationAssurance
         protected global::System.Web.UI.WebControls.TextBox TextBoxNumAtt;
 
         /// <summary>
-        /// Contrôle DropDownListFlotte.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListFlotte;
-
-        /// <summary>
         /// Contrôle TextBoxNumP.
         /// </summary>
         /// <remarks>
@@ -256,6 +283,33 @@ namespace ApplicationAssurance
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxNumP;
+
+        /// <summary>
+        /// Contrôle PermisRight.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage PermisRight;
+
+        /// <summary>
+        /// Contrôle PermisWrong.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage PermisWrong;
+
+        /// <summary>
+        /// Contrôle DropDownListFlotte.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListFlotte;
 
         /// <summary>
         /// Contrôle HorsAutoArea.
@@ -310,15 +364,6 @@ namespace ApplicationAssurance
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownListTypeContrat;
-
-        /// <summary>
-        /// Contrôle DropDownListUsage.
-        /// </summary>
-        /// <remarks>
-        /// Champ généré automatiquement.
-        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListUsage;
 
         /// <summary>
         /// Contrôle TextBoxNumPolice.
@@ -384,6 +429,24 @@ namespace ApplicationAssurance
         protected global::System.Web.UI.WebControls.TextBox TextBoxImmatriculation;
 
         /// <summary>
+        /// Contrôle ImmaRight.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage ImmaRight;
+
+        /// <summary>
+        /// Contrôle ImmaWrong.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage ImmaWrong;
+
+        /// <summary>
         /// Contrôle TextBoxMarque.
         /// </summary>
         /// <remarks>
@@ -391,6 +454,15 @@ namespace ApplicationAssurance
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBoxMarque;
+
+        /// <summary>
+        /// Contrôle DropDownListUsage.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListUsage;
 
         /// <summary>
         /// Contrôle TextBoxDateMec.
