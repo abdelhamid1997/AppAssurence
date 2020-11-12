@@ -1,7 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AffectationMatricule.aspx.cs" Inherits="ApplicationAssurance.AffectationMatricule" %>
-
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -29,11 +27,13 @@
             width:100%;
             margin:auto;
         }
-        .body{
+        .body
+        {
         margin:auto;
         width:100%;
-    }
-    .drop{
+        }
+        .drop
+        {
            margin-left:15rem;
            border:1px solid black;
            border-radius:3px;
@@ -41,13 +41,15 @@
            outline:none;
            transition:0.5s ease all;
            width:40%;
-       }
-       .drop:hover{
+        }
+        .drop:hover
+        {
           background-color:#0c52f6;
           color:white;
-       }
+        }
         
-        .form-control{
+        .form-control
+        {
            background-color:white;
            width:80%;
            height:auto;
@@ -55,12 +57,14 @@
            border-radius:5px;
            box-shadow:5px 5px 10px #808080;
            
-       }
+        }
         
-       .modal-content{
+        .modal-content
+        {
         border:none;
-       }
-        .form-group label{
+        }
+        .form-group label
+        {
            margin-right:2rem;
            margin-top:0.2rem;
            position:absolute;
@@ -68,7 +72,8 @@
            
             
         }
-       .form-group input[type=text] , input[type=datetime]{
+       .form-group input[type=text] , input[type=datetime]
+       {
            width:50%;
            padding:0.3rem;
            border:1px solid black;
@@ -79,11 +84,13 @@
 
        }
        
-       .form-group input[type=text]:focus{
+       .form-group input[type=text]:focus
+       {
           border:2px solid #0c52f6;
            
        }
-       .drop{
+       .drop
+       {
            margin-left:15rem;
            border:1px solid black;
            border-radius:3px;
@@ -92,7 +99,8 @@
            transition:0.5s ease all;
            width:40%;
        }
-       .drop:hover{
+       .drop:hover
+       {
           background-color:#0c52f6;
           color:white;
        }

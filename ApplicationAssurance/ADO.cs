@@ -25,7 +25,7 @@ namespace ApplicationAssurance
             {
                 if (con.State == ConnectionState.Closed || con.State == ConnectionState.Broken)
                 {
-                    con.ConnectionString = @"Data Source=DESKTOP-65ILK58\SQLEXPRESS;Initial Catalog=Assurancedb;Integrated Security=True";
+                    con.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=Assurancedb;Integrated Security=True";
 
                     con.Open();
                 }
