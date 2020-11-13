@@ -1,13 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterPage.Master" AutoEventWireup="true" CodeBehind="Recouvrementlient.aspx.cs" Inherits="ApplicationAssurance.Recouvrementlient" EnableEventValidation="false" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterPage.Master" AutoEventWireup="true" CodeBehind="EtatPayClient.aspx.cs" Inherits="ApplicationAssurance.EtatPayClient"  EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="StyleEtatAvenant.css" rel="stylesheet" />
-    <style>
+        <style>
         .main{
            position: relative;
            width:100%;
            height:100vh;
            color:#fff;
-           background:linear-gradient(-45deg, #ee7752, #23d56a, #23a6d5, #23d5ab);
+           background:linear-gradient(-45deg, #ee7752, #eed952, #b5b4ae, #b5b08f); 
            background-size:400% 400%;
 /*           animation:change 10s ease-in-out infinite;
 */        }
@@ -41,14 +41,14 @@
         }
         .recousearch
         {
-            margin-left:30%;
+               margin-left:30%;
         }
         .txtDate {
-          margin-top: 0.5rem;
-          height: 2rem;
-          width: 20%;
-          font-weight: 500;
-                  }
+    margin-top: 0.5rem;
+    height: 2rem;
+    width: 20%;
+    font-weight: 500;
+}
         .DropSearch {
            font-weight: 500;
            justify-content: center;
@@ -82,7 +82,12 @@
           {
               margin-top:4rem;
           }
-        
+        .detail
+        {
+            
+            margin-top:15%;
+            margin-left:25%;
+        }
           .GridViewAv 
           {
            position:absolute;
@@ -103,34 +108,40 @@
               {
                   background-color:#A1DCF2;
               }
-<<<<<<< HEAD
-=======
-        .auto-style1 {
-            position: absolute;
-            left: 0px;
-            top: 3px;
-            border-style: none;
-            border-color: inherit;
-            border-width: medium;
-            background-color: #4fadf1;
-        }
->>>>>>> 3d8aa206723ebe39f5078df8b5d028b4746044f6
+            
+              .table1
+              {
+                 
+                   border-collapse: collapse;
+                   margin: 25px 0;
+                   min-width: 500px;
+                   border-radius: 5px 5px 0 0;
+                   overflow: hidden;
+                   box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+                   padding:2.5rem;
+                   font-size:1.2rem;
+              }
+             
+              
+              
     </style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="main">
-      <div class="dvHead">
- <%-- <div class="entredate">
+          <div class="main">
+
+    <div class="dvHead">
+  <div class="entredate">
     <asp:TextBox ID="date1" runat="server" TextMode="Date"  CssClass="txtDate "></asp:TextBox>
-    <asp:TextBox ID="date2" runat="server" TextMode="Date"  CssClass="txtDate "></asp:TextBox>
-      </div>--%>
+    <asp:TextBox ID="date2" runat="server" TextMode="Date"  CssClass="txtDate " OnTextChanged="date2_TextChanged"></asp:TextBox>
+      </div>
     <div class="recousearch">
     <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" CssClass="DropSearch " OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
         <asp:ListItem>Auto</asp:ListItem>
         <asp:ListItem>HorsAuto</asp:ListItem>
         <asp:ListItem>Assistance</asp:ListItem>
     </asp:DropDownList>
-    <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="true" CssClass="DropSearch " >
+    <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="true" CssClass="DropSearch " OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" >
       
         <asp:ListItem>Compagnie</asp:ListItem>
       
@@ -138,22 +149,16 @@
         <asp:TextBox ID="recherchertxt" runat="server" CssClass="searchtxt"></asp:TextBox>
     <asp:Button ID="rechercherbtn" runat="server" Text="Rechercher"   CssClass="btn-primary btnSearch" OnClick="rechercherbtn_Click"/>
         </div>
-          
+         
         </div>
-
      <div class="dvGrid">
-<<<<<<< HEAD
-    <asp:GridView ID="GridView1" RowStyle-CssClass="moseover" ClientIDMode="Static" CssClass="GridViewAv" runat="server" AutoPostBack="true" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1" AllowPaging="True" EnableSortingAndPagingCallbacks="True" PageSize="6"  >
-=======
-    <asp:GridView ID="GridView1" RowStyle-CssClass="moseover" ClientIDMode="Static" CssClass="GridViewAv" runat="server"  OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1" AllowPaging="True" PageSize="6" OnDataBound="GridView1_DataBound" OnPageIndexChanging="GridView1_PageIndexChanging"  >
->>>>>>> 3d8aa206723ebe39f5078df8b5d028b4746044f6
-      <%--  <Columns>
-            <asp:HyperLinkField  DataNavigateUrlFields="id_affaire" DataNavigateUrlFormatString="~/AffectationRenouvellement.aspx?id_affaire={0}" DataTextField="id_affaire" HeaderText="Action" NavigateUrl="~/AffectationRenouvellement.aspx" Target="_blank"  >
-            <ControlStyle BorderStyle="None" CssClass="action"  />
-            <ItemStyle HorizontalAlign="Center" />
-            </asp:HyperLinkField>
-        </Columns>--%>
-</asp:GridView>
-        </div>
-          </div>
+         <asp:GridView ID="GridView1"  ClientIDMode="Static" CssClass="GridViewAv"  runat="server" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" ShowFooter="True" AllowPaging="True"  OnDataBound="GridView1_DataBound" PageSize="6" OnPageIndexChanging="GridView1_PageIndexChanging">
+             <FooterStyle BackColor="#3333CC" Font-Bold="True" Font-Size="Medium" ForeColor="White" />
+
+         </asp:GridView>
+         
+     </div>
+            
+</div>
 </asp:Content>
+

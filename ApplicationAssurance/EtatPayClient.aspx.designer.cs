@@ -11,8 +11,26 @@ namespace ApplicationAssurance
 {
 
 
-    public partial class Recouvrementlient
+    public partial class EtatPayClient
     {
+
+        /// <summary>
+        /// Contrôle date1.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox date1;
+
+        /// <summary>
+        /// Contrôle date2.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox date2;
 
         /// <summary>
         /// Contrôle DropDownList1.

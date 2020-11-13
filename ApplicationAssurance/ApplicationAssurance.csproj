@@ -67,8 +67,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AffectationAnnulation.aspx" />
+<<<<<<< HEAD
     <Content Include="AffectationPaiementClient.aspx" />
     <Content Include="etatRemis.aspx" />
+=======
+    <Content Include="AffichagePayClient.aspx" />
+    <Content Include="EtatPayClient.aspx" />
+>>>>>>> 3d8aa206723ebe39f5078df8b5d028b4746044f6
     <Content Include="img\RightIcon.png" />
     <Content Include="img\WrongIcon.png" />
     <Content Include="Affectationgarantie1.aspx" />
@@ -259,6 +264,13 @@
     <Compile Include="AffectationVehicule.aspx.designer.cs">
       <DependentUpon>AffectationVehicule.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AffichagePayClient.aspx.cs">
+      <DependentUpon>AffichagePayClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AffichagePayClient.aspx.designer.cs">
+      <DependentUpon>AffichagePayClient.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AnnulationMP.aspx.cs">
       <DependentUpon>AnnulationMP.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -293,6 +305,13 @@
     </Compile>
     <Compile Include="ChangVehiculMP.aspx.designer.cs">
       <DependentUpon>ChangVehiculMP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EtatPayClient.aspx.cs">
+      <DependentUpon>EtatPayClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EtatPayClient.aspx.designer.cs">
+      <DependentUpon>EtatPayClient.aspx</DependentUpon>
     </Compile>
     <Compile Include="EtatProduction.aspx.cs">
       <DependentUpon>EtatProduction.aspx</DependentUpon>

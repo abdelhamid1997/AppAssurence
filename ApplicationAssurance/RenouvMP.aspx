@@ -62,7 +62,7 @@
         <asp:ListItem>HorsAuto</asp:ListItem>
         <asp:ListItem>Assistance</asp:ListItem>
 </asp:DropDownList>
- <div id="RecherchZone" class="input-group mb-0 searchdvRec" >    
+ <div id="RecherchZone" class="input-group mb-0 searchdvRec" style="left: 0px; top: 0px" >    
 <asp:TextBox ID="TextBox1" CssClass="form-control textbx" runat="server" ></asp:TextBox>
 <asp:Button ID="Button1" CssClass="btn-primary btnSearch" runat="server" Text="Rechercher" OnClick="Button1_Click" />
  </div>
@@ -72,7 +72,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="dvGrid">
-    <asp:GridView ID="GridView1" CssClass="GridViewAv" runat="server"  AutoPostBack="true" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnRowDataBound="GridView1_RowDataBound" PageSize="6" AllowPaging="True" EnableSortingAndPagingCallbacks="True" >
+    <asp:GridView ID="GridView1" CssClass="GridViewAv" runat="server"  OnSelectedIndexChanged="GridView1_SelectedIndexChanged" OnRowDataBound="GridView1_RowDataBound" PageSize="6" AllowPaging="True" EnableSortingAndPagingCallbacks="True" >
         <Columns>
             <asp:HyperLinkField DataNavigateUrlFields="id_affaire" DataNavigateUrlFormatString="~/AffectationRenouvellement.aspx?id_affaire={0}" DataTextField="id_affaire" HeaderText="Action" NavigateUrl="~/AffectationRenouvellement.aspx" Target="_blank" />
         </Columns>
