@@ -67,6 +67,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AffectationAnnulation.aspx" />
+    <Content Include="AffectationPaiementClient.aspx" />
+    <Content Include="etatRemis.aspx" />
     <Content Include="img\RightIcon.png" />
     <Content Include="img\WrongIcon.png" />
     <Content Include="Affectationgarantie1.aspx" />
@@ -88,6 +90,7 @@
     <Content Include="img\logoSite.png" />
     <Content Include="img\refrech.png" />
     <Content Include="mainPage.aspx" />
+    <Content Include="modification_cheque.aspx" />
     <Content Include="Recouvrementlient.aspx" />
     <Content Include="RenouvMP.aspx" />
     <Content Include="ResiliationMP.aspx" />
@@ -228,6 +231,13 @@
     <Compile Include="AffectationMatricule.aspx.designer.cs">
       <DependentUpon>AffectationMatricule.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AffectationPaiementClient.aspx.cs">
+      <DependentUpon>AffectationPaiementClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AffectationPaiementClient.aspx.designer.cs">
+      <DependentUpon>AffectationPaiementClient.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AffectationRenouvellement.aspx.cs">
       <DependentUpon>AffectationRenouvellement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -291,6 +301,13 @@
     <Compile Include="EtatProduction.aspx.designer.cs">
       <DependentUpon>EtatProduction.aspx</DependentUpon>
     </Compile>
+    <Compile Include="etatRemis.aspx.cs">
+      <DependentUpon>etatRemis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="etatRemis.aspx.designer.cs">
+      <DependentUpon>etatRemis.aspx</DependentUpon>
+    </Compile>
     <Compile Include="mainPage.aspx.cs">
       <DependentUpon>mainPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -304,6 +321,13 @@
     </Compile>
     <Compile Include="masterPage.Master.designer.cs">
       <DependentUpon>masterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="modification_cheque.aspx.cs">
+      <DependentUpon>modification_cheque.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="modification_cheque.aspx.designer.cs">
+      <DependentUpon>modification_cheque.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recouvrementlient.aspx.cs">

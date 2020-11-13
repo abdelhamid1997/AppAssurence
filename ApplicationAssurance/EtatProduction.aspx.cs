@@ -31,7 +31,7 @@ namespace ApplicationAssurance
                 float Total = 0;
                 float cheque = 0;
                 float espece = 0;
-                d.cmd.CommandText = "select id_affaire,nom_RS,prenom_FJ,numPolice,numAttestation,montant,Branche,Compagnie,convert(varchar, DateDebut) as DateDebut,convert(varchar, DateFin) as DateFin from AffaireAutoClient  where DateOperation = '" + DateTime.Today + "'";
+                d.cmd.CommandText = "select id_affaire,nom_RS,prenom_FJ,numPolice,numAttestation,montant,Branche,Compagnie,convert(varchar, DateDebut) as DateDebut,convert(varchar, DateFin) as DateFin from AffaireAutoClient";
                 d.cmd.Connection = d.con;
                 d.dr = d.cmd.ExecuteReader();
                 d.dt.Load(d.dr);

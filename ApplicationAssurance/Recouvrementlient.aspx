@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterPage.Master" AutoEventWireup="true" CodeBehind="Recouvrementlient.aspx.cs" Inherits="ApplicationAssurance.Recouvrementlient" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/masterPage.Master" AutoEventWireup="true" CodeBehind="Recouvrementlient.aspx.cs" Inherits="ApplicationAssurance.Recouvrementlient" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="StyleEtatAvenant.css" rel="stylesheet" />
     <style>
@@ -41,14 +41,14 @@
         }
         .recousearch
         {
-               margin-left:30%;
+            margin-left:30%;
         }
         .txtDate {
-    margin-top: 0.5rem;
-    height: 2rem;
-    width: 20%;
-    font-weight: 500;
-}
+          margin-top: 0.5rem;
+          height: 2rem;
+          width: 20%;
+          font-weight: 500;
+                  }
         .DropSearch {
            font-weight: 500;
            justify-content: center;
@@ -82,13 +82,7 @@
           {
               margin-top:4rem;
           }
-          .action
-          {
-              text-decoration:none;
-              border:2px 2px 2px 2px;
-              padding:0.3rem;
-              margin-left:0.6rem;
-          }
+        
           .GridViewAv 
           {
            position:absolute;
@@ -104,8 +98,11 @@
         font-size: 20px;
         background-color: #2635a9;
   
-    }
-
+              }
+              #GridView1 tr.moseover:hover
+              {
+                  background-color:#A1DCF2;
+              }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -127,18 +124,19 @@
         <asp:ListItem>Num Attestation</asp:ListItem>
     </asp:DropDownList>
         <asp:TextBox ID="recherchertxt" runat="server" CssClass="searchtxt"></asp:TextBox>
-    <asp:Button ID="rechercherbtn" runat="server" Text="Rechercher"   CssClass="btn-primary btnSearch"/>
+    <asp:Button ID="rechercherbtn" runat="server" Text="Rechercher"   CssClass="btn-primary btnSearch" OnClick="rechercherbtn_Click"/>
         </div>
           
         </div>
 
      <div class="dvGrid">
-    <asp:GridView ID="GridView1" CssClass="GridViewAv" runat="server" AutoPostBack="true"  PageSize="6" AllowPaging="True" EnableSortingAndPagingCallbacks="True"  >
-        <Columns>
-            <asp:HyperLinkField Text="Non Affecter"  DataNavigateUrlFields="id_affaire" DataNavigateUrlFormatString="~/AffectationRenouvellement.aspx?id_affaire={0}" DataTextField="id_affaire" HeaderText="" NavigateUrl="~/AffectationRenouvellement.aspx" Target="_blank"  >
+    <asp:GridView ID="GridView1" RowStyle-CssClass="moseover" ClientIDMode="Static" CssClass="GridViewAv" runat="server" AutoPostBack="true" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1" AllowPaging="True" EnableSortingAndPagingCallbacks="True" PageSize="6"  >
+      <%--  <Columns>
+            <asp:HyperLinkField  DataNavigateUrlFields="id_affaire" DataNavigateUrlFormatString="~/AffectationRenouvellement.aspx?id_affaire={0}" DataTextField="id_affaire" HeaderText="Action" NavigateUrl="~/AffectationRenouvellement.aspx" Target="_blank"  >
             <ControlStyle BorderStyle="None" CssClass="action"  />
+            <ItemStyle HorizontalAlign="Center" />
             </asp:HyperLinkField>
-        </Columns>
+        </Columns>--%>
 </asp:GridView>
         </div>
           </div>

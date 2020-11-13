@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 using System.Drawing;
+using System.Web.Services.Description;
 
 namespace ApplicationAssurance
 {
@@ -117,7 +118,8 @@ namespace ApplicationAssurance
             {
                 ErrorSearch.InnerText = "N'existe pas";
             }
-
+            alertdvfail.Attributes.Add("class", "alterdvfail");
+            AlertdvSucces.Attributes.Add("class", "AlertdvSucces");
             d.DECONNECTER();
         }
 
@@ -157,25 +159,29 @@ namespace ApplicationAssurance
             return ret;
         }
 
-        //InsertConductSame
-        /*public string AddConductSame()
+        //AddCreditSaisieAff
+        public void InsertCredit()
         {
-            string ret = "0";
             d.CONNECTER();
+            d.cmd.Parameters.Clear();
+
+            d.cmd = new SqlCommand("select TOP 1 * from affaire order by id_affaire desc", d.con);
+            d.dr = d.cmd.ExecuteReader();
+            int ida = 0;
+            if (d.dr.Read())
+            {
+                ida = Convert.ToInt32(d.dr[0].ToString());
+                d.dr.Close();
+            }
+            d.cmd.Parameters.Clear();
             d.cmd.CommandType = CommandType.StoredProcedure;
-            d.cmd.CommandText = "InsertConducteurSame";
-            d.cmd.Parameters.Add("@idclient", SqlDbType.VarChar).Value = TextBoxId.Text;
-            d.cmd.Parameters.Add("@nomConducteur", SqlDbType.VarChar).Value = TextBoxNomRS.Text;
-            d.cmd.Parameters.Add("@prénomConducteur", SqlDbType.VarChar).Value = TextBoxPrenomFJ.Text;
-            d.cmd.Parameters.Add("@numPermis", SqlDbType.VarChar).Value = TextBoxNumP.Text;
-            SqlParameter ok = new SqlParameter("@ok", SqlDbType.Int);
-            ok.Direction = ParameterDirection.Output;
-            d.cmd.Parameters.Add(ok);
+            d.cmd.CommandText = "InsertCreditAff";
+            d.cmd.Parameters.Add("@idAff",SqlDbType.Int).Value= ida;
+            d.cmd.Parameters.Add("@MontantCredit", SqlDbType.Decimal).Value =decimal.Parse(TextBoxMontant.Text);
             d.cmd.Connection = d.con;
             d.cmd.ExecuteNonQuery();
-            ret = ok.Value.ToString();
-            return ret;
-        }*/
+
+        }
         
 
 
@@ -225,39 +231,50 @@ namespace ApplicationAssurance
             return nbrP;
 
         }
-        public void InsertClientAff()
+        //Immatriculation
+        public int NbrImmatriculation()
         {
             d.CONNECTER();
-            if (TextBoxId.Text == "" || TextBoxCIN.Text == "" || TextBoxNomRS.Text == "" || TextBoxPrenomFJ.Text == "" || TextBoxGSM.Text == "" || TextBoxDateN.Text == "" || TextBoxVille.Text == "" || TextBoxAdress.Text == "" || TextBoxEmail.Text == "" || GsmValidation() == 0 || emailValidation() == 0 || TextBoxDateDebut.Text =="" || TextBoxDateFin.Text == "" || TextBoxDateOperation.Text == "" || TextBoxNumPolice.Text == ""  || DateTime.Parse(TextBoxDateOperation.Text) > DateTime.Parse(TextBoxDateDebut.Text) || DateTime.Parse(TextBoxDateDebut.Text) > DateTime.Parse(TextBoxDateFin.Text))
+            int nbrIm;
+            d.cmd.CommandText = "select Count(Immatriculation) from vehicule where Immatriculation = '"+TextBoxImmatriculation.Text+"'";
+            d.cmd.Connection = d.con;
+            nbrIm = (int)d.cmd.ExecuteScalar();
+            return nbrIm;
+        }
+
+        public bool InsertClientAff()
+        {
+            d.CONNECTER();
+            bool result = false;
+            if (DateTime.Parse(TextBoxDateOperation.Text) > DateTime.Parse(TextBoxDateDebut.Text) || DateTime.Parse(TextBoxDateDebut.Text) > DateTime.Parse(TextBoxDateFin.Text))
+            {              
+                result = false;
+
+            } else
             {
-                alertdvfail.InnerText = "Error";
-                alertdvfail.Attributes.Add("class", "Error alert");
-                AlertdvSucces.Attributes.Add("class", "AlertdvSucces");
-            }
-            else
-            {
-                if (IfClientExist() == false)
-                {
-                    d.cmd.CommandText = "insert into client values('" + TextBoxId.Text + "','" + TextBoxCIN.Text + "','" + TextBoxNomRS.Text + "','" + TextBoxPrenomFJ.Text + "','" + TextBoxGSM.Text + "','"+DateTime.Parse( TextBoxDateN.Text)+"','" + TextBoxVille.Text + "','" + TextBoxAdress.Text + "','" + TextBoxEmail.Text + "','" + DropDownListActivite.SelectedValue + "','" + DropDownListProfil.SelectedValue + "','" + DropDownListTypePerson.SelectedValue + "')";
-                    d.cmd.Connection = d.con;
-                    d.cmd.ExecuteNonQuery();
+                    if (IfClientExist() == false)
+                    {
+                        d.cmd.CommandText = "insert into client values('" + TextBoxId.Text + "','" + TextBoxCIN.Text + "','" + TextBoxNomRS.Text + "','" + TextBoxPrenomFJ.Text + "','" + TextBoxGSM.Text + "','" + DateTime.Parse(TextBoxDateN.Text)+ "','" + TextBoxVille.Text + "','" + TextBoxAdress.Text + "','" + TextBoxEmail.Text + "','" + DropDownListActivite.SelectedValue + "','" + DropDownListProfil.SelectedValue + "','" + DropDownListTypePerson.SelectedValue + "')";
+                        d.cmd.Connection = d.con;
+                        d.cmd.ExecuteNonQuery();
 
-                    d.cmd.CommandText = "insert into affaire(id_client,souscripteur,dateOperation,datedebut,datefin,numPolice,natureOperation,branche,Operateur,Compagnie,typeAff,Affectation,Reglement_cabinet) values('" + TextBoxId.Text + "','" + TextBoxSouscripteur.Text + "','" + DateTime.Parse(TextBoxDateOperation.Text )+ "','" + DateTime.Parse(TextBoxDateDebut.Text) + "','" + DateTime.Parse(TextBoxDateFin.Text )+ "','" + TextBoxNumPolice.Text + "','Affaire nouvelle','" + DropDownListChoix.SelectedValue + "','Omar','" + DropDownListNomCompanie.SelectedValue + "','" + DropDownListTypeContrat.SelectedValue + "','Non Affecter','Non Reglée')";
-                    d.cmd.Connection = d.con;
-                    d.cmd.ExecuteNonQuery();
-                   
-                }
-                else
-                {
-                    d.cmd.CommandText = "insert into affaire(id_client,souscripteur,dateOperation,datedebut,datefin,numPolice,natureOperation,branche,Operateur,Compagnie,typeAff,Affectation,Reglement_cabinet) values('" + TextBoxId.Text + "','" + TextBoxSouscripteur.Text + "','" + DateTime.Parse(TextBoxDateOperation.Text) + "','" + DateTime.Parse(TextBoxDateDebut.Text) + "','" + DateTime.Parse(TextBoxDateFin.Text) + "','" + TextBoxNumPolice.Text + "','Affaire nouvelle','" + DropDownListChoix.SelectedValue + "','Omar','" + DropDownListNomCompanie.SelectedValue + "','" + DropDownListTypeContrat.SelectedValue + "','Non Affecter','Non Reglée')";
-                    d.cmd.Connection = d.con;
-                    d.cmd.ExecuteNonQuery();
+                        d.cmd.CommandText = "insert into affaire(id_client,souscripteur,dateOperation,datedebut,datefin,numPolice,natureOperation,branche,Operateur,Compagnie,typeAff,Affectation,Reglement_cabinet) values('" + TextBoxId.Text + "','" + TextBoxSouscripteur.Text + "','" + DateTime.Parse(TextBoxDateOperation.Text) + "','" + DateTime.Parse(TextBoxDateDebut.Text) + "','" + DateTime.Parse(TextBoxDateFin.Text) + "','" + TextBoxNumPolice.Text + "','Affaire nouvelle','" + DropDownListChoix.SelectedValue + "','Omar','" + DropDownListNomCompanie.SelectedValue + "','" + DropDownListTypeContrat.SelectedValue + "','Non Affecter','Non Reglée')";
+                        d.cmd.Connection = d.con;
+                        d.cmd.ExecuteNonQuery();
+
+                    }
+                    else
+                    {
+                        d.cmd.CommandText = "insert into affaire(id_client,souscripteur,dateOperation,datedebut,datefin,numPolice,natureOperation,branche,Operateur,Compagnie,typeAff,Affectation,Reglement_cabinet) values('" + TextBoxId.Text + "','" + TextBoxSouscripteur.Text + "','" + DateTime.Parse(TextBoxDateOperation.Text) + "','" + DateTime.Parse(TextBoxDateDebut.Text) + "','" + DateTime.Parse(TextBoxDateFin.Text) + "','" + TextBoxNumPolice.Text + "','Affaire nouvelle','" + DropDownListChoix.SelectedValue + "','Omar','" + DropDownListNomCompanie.SelectedValue + "','" + DropDownListTypeContrat.SelectedValue + "','Non Affecter','Non Reglée')";
+                        d.cmd.Connection = d.con;
+                        d.cmd.ExecuteNonQuery();
 
 
-                }
-
+                    }
+                result = true;
 
             }
+            return result;
            
         }
 
@@ -278,98 +295,118 @@ namespace ApplicationAssurance
                 {
                     flt = 0;
                 }
-
-                if (NumAtt() == 0)
+                if (TextBoxMontant.Text != "0" && TextBoxMontant.Text != "" && TextBoxId.Text != "" && TextBoxCIN.Text != "" && TextBoxNomRS.Text != "" && TextBoxPrenomFJ.Text != "" && TextBoxGSM.Text != "" && TextBoxDateN.Text != "" && TextBoxVille.Text != "" && TextBoxAdress.Text != "" && TextBoxEmail.Text != "" && GsmValidation() == 1 && emailValidation() == 1 && TextBoxDateDebut.Text != "" && TextBoxDateFin.Text != "" && TextBoxDateOperation.Text != "" && TextBoxNumPolice.Text != "")
                 {
-                    if (NumPermis() == 0)
+                    if (NumAtt() == 0)
                     {
-                        if (emailValidation() == 1)
+                        if (NumPermis() == 0)
                         {
-
-                            if (GsmValidation() == 1)
+                            if (emailValidation() == 1)
                             {
-                                if (NumPermisValidation() == 1 && ImmatriculationValidation() == 1 && TextBoxMontant.Text != "0" && TextBoxMontant.Text != "")
+
+                                if (GsmValidation() == 1)
                                 {
-                                    //try
-                                    //{
-                                    InsertClientAff();
-                                    d.cmd.CommandText = "select TOP 1 * from affaire order by id_affaire desc";
-                                    d.cmd.Connection = d.con;
-                                    d.dr = d.cmd.ExecuteReader();
-                                    if (d.dr.Read())
+                                    if (NbrImmatriculation() == 0)
                                     {
-                                        int IdAff;
-                                        IdAff = Convert.ToInt32(d.dr[0].ToString());
-                                        d.cmd.CommandText = "insert into affaireAuto values ('" + TextBoxNumAtt.Text + "','" + flt + "','" + IdAff + "')";
-                                        d.cmd.Connection = d.con;
-                                        d.dr.Close();
-                                        d.cmd.ExecuteNonQuery();
-                                        d.cmd.CommandText = "insert into vehicule values('" + TextBoxImmatriculation.Text + "','" + IdAff + "','" + TextBoxMarque.Text + "','" + DropDownListUsage.SelectedValue + "','" + DateTime.Parse(TextBoxDateMec.Text) + "')";
-                                        d.cmd.Connection = d.con;
-                                        d.cmd.ExecuteNonQuery();
-                                        AddMoney();
-                                        d.DECONNECTER();
+                                        if (NumPermisValidation() == 1 && ImmatriculationValidation() == 1)
+                                        {
+                                            //try
+                                            //{
+                                            if (InsertClientAff() == true)
+                                            {
+                                                d.cmd.CommandText = "select TOP 1 * from affaire order by id_affaire desc";
+                                                d.cmd.Connection = d.con;
+                                                d.dr = d.cmd.ExecuteReader();
+                                                if (d.dr.Read())
+                                                {
+                                                    int IdAff;
+                                                    IdAff = Convert.ToInt32(d.dr[0].ToString());
+                                                    d.cmd.CommandText = "insert into affaireAuto values ('" + TextBoxNumAtt.Text + "','" + flt + "','" + IdAff + "')";
+                                                    d.cmd.Connection = d.con;
+                                                    d.dr.Close();
+                                                    d.cmd.ExecuteNonQuery();
+                                                    d.cmd.CommandText = "insert into vehicule values('" + TextBoxImmatriculation.Text + "','" + IdAff + "','" + TextBoxMarque.Text + "','" + DropDownListUsage.SelectedValue + "','" + DateTime.Parse(TextBoxDateMec.Text) + "')";
+                                                    d.cmd.Connection = d.con;
+                                                    d.cmd.ExecuteNonQuery();
+                                                    AddMoney();
+                                                    InsertCredit();
+                                                    d.DECONNECTER();
 
-                                    }
-                                    if (checkboxConducteur.Checked == true)
-                                    {
 
-                                        d.CONNECTER();
-                                        d.cmd = new SqlCommand("insert into conducteur values('" + TextBoxId.Text + "','" + TextBoxNomRS.Text + "','" + TextBoxPrenomFJ.Text + "','" + TextBoxNumP.Text + "')", d.con);
-                                        d.cmd.ExecuteNonQuery();
+                                                }
+                                                if (checkboxConducteur.Checked == true)
+                                                {
+
+                                                    d.CONNECTER();
+                                                    d.cmd = new SqlCommand("insert into conducteur values('" + TextBoxId.Text + "','" + TextBoxNomRS.Text + "','" + TextBoxPrenomFJ.Text + "','" + TextBoxNumP.Text + "')", d.con);
+                                                    d.cmd.ExecuteNonQuery();
+                                                }
+                                                else
+                                                {
+                                                    d.CONNECTER();
+                                                    d.cmd = new SqlCommand("insert into conducteur values('" + TextBoxId.Text + "','" + TextBoxNomConduct.Text + "','" + TextBoxPrenomConduct.Text + "','" + TextBoxNumP.Text + "')", d.con);
+                                                    d.cmd.ExecuteNonQuery();
+                                                }
+                                                AlertdvSucces.Attributes.Add("class", "Error alertS");
+                                                alertdvfail.Attributes.Add("class", "alterdvfail");
+
+
+                                            }
+                                            else
+                                            {
+                                                alertdvfail.InnerText = "la date d'operation ou la date de debut  est superieur à la date de fin ";
+                                                alertdvfail.Attributes.Add("class", "Error alert");
+                                                AlertdvSucces.Attributes.Add("class", "AlertdvSucces");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            alertdvfail.InnerText = "Num Permis ou Immatriculation et incorect !";
+                                            alertdvfail.Attributes.Add("class", "Error alert");
+                                            AlertdvSucces.Attributes.Add("class", "AlertdvSucces");
+
+
+                                        }
                                     }
                                     else
                                     {
-                                        d.CONNECTER();
-                                        d.cmd = new SqlCommand("insert into conducteur values('" + TextBoxId.Text + "','" + TextBoxNomConduct.Text + "','" + TextBoxPrenomConduct.Text + "','" + TextBoxNumP.Text + "')", d.con);
-                                        d.cmd.ExecuteNonQuery();
+                                        alertdvfail.InnerText = "ce matricule et deja exsist";
+                                        alertdvfail.Attributes.Add("class", "Error alert");
+                                        AlertdvSucces.Attributes.Add("class", "AlertdvSucces");
                                     }
-                                    AlertdvSucces.Attributes.Add("class", "Error alertS");
-                                    alertdvfail.Attributes.Add("class", "alterdvfail");
-
-                                    //}
-                                    //catch (Exception)
-                                    //{
-                                    //    alertdvfail.Attributes.Add("class", "Error alert");
-                                    //    AlertdvSucces.Attributes.Add("class", "AlertdvSucces");
-
-
-                                    //}
-
                                 }
                                 else
                                 {
-                                    alertdvfail.InnerText = "Verifier les champs s'ils vous plait";
+                                    alertdvfail.InnerText = "GSM non valid  ";
                                     alertdvfail.Attributes.Add("class", "Error alert");
                                     AlertdvSucces.Attributes.Add("class", "AlertdvSucces");
-
-
                                 }
                             }
                             else
                             {
-                                alertdvfail.InnerText = "GSM non valid  ";
+                                alertdvfail.InnerText = "Email non valid";
                                 alertdvfail.Attributes.Add("class", "Error alert");
                                 AlertdvSucces.Attributes.Add("class", "AlertdvSucces");
                             }
-                        }else
+                        }
+                        else
                         {
-                            alertdvfail.InnerText = "Email non valid";
+
+                            alertdvfail.InnerText = "Num Permis deja existe";
                             alertdvfail.Attributes.Add("class", "Error alert");
                             AlertdvSucces.Attributes.Add("class", "AlertdvSucces");
                         }
+                    }
+                    else
+                    {
+                        alertdvfail.InnerText = "Num Attestation deja exsist";
+                        alertdvfail.Attributes.Add("class", "Error alert");
+                        AlertdvSucces.Attributes.Add("class", "AlertdvSucces");
+                    }
                 }
                 else
                 {
-
-                    alertdvfail.InnerText = "Num Permis deja existe";
-                    alertdvfail.Attributes.Add("class", "Error alert");
-                    AlertdvSucces.Attributes.Add("class", "AlertdvSucces");
-                }
-                }
-                else
-                {
-                    alertdvfail.InnerText = "Num Attestation deja exsist";
+                    alertdvfail.InnerText = "Merci de remplir tous les champs";
                     alertdvfail.Attributes.Add("class", "Error alert");
                     AlertdvSucces.Attributes.Add("class", "AlertdvSucces");
                 }

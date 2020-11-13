@@ -229,8 +229,7 @@
     <span class="closebtn"  onclick="this.parentElement.style.display='none';">&times;</span> 
     <strong>Danger!</strong>Entrez le montant de cette affaire s'ils vous plait
      </div>--%>
-            <div class=" form-control">
-                
+            <div class=" form-control">    
                 <div class="modal-content">
                     <div class="modal-header">
                          <h3>SAISIE CLIENT</h3>
@@ -509,4 +508,5 @@
         </asp:Table>
         </div>
        <asp:Button ID="btnValider" CssClass=" btn-success btnvalider" Text="Valider" runat="server" OnClick="btnValider_Click"/>
+       <asp:HyperLink ID="HyperLinkRec" CssClass="btn-link" runat="server" NavigateUrl="~/Recouvrementlient.aspx">Recouvrement</asp:HyperLink>
 </asp:Content>
